@@ -1,0 +1,17 @@
+title: COMP229 Midterm — Equipment Catalogue API
+description: Fall 2026 midterm instructions, personalized requirements, and API examples.
+url: https://cent-col.github.io
+baseurl: /COMP229-F26-MIDTERM
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+exclude:
+  - node_modules
+  - server.js
+  - package.json
+  - package-lock.json
+  - SUBMISSION.txt
+  - README.md
+  - screenshots
+  - requests

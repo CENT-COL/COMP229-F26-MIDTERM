@@ -12,7 +12,12 @@ Suggested time: 10 minutes for setup/personalization, 65 minutes for endpoints, 
 
 ## 2. Setup and server startup
 
-1. Download the starter ZIP from the course midterm item, extract it, and open the folder containing `package.json` in VS Code. If your instructor supplies a repository link instead, clone that repository and open its folder.
+1. [Download the starter ZIP](https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip), extract it, and open the folder containing `package.json` in VS Code. Alternatively, clone the repository:
+
+   ```sh
+   git clone https://github.com/CENT-COL/COMP229-F26-MIDTERM.git
+   cd COMP229-F26-MIDTERM
+   ```
 2. Use Node.js **22 or later**. In the project terminal, check and install:
 
    ```sh
