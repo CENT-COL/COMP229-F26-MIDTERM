@@ -5,6 +5,8 @@ Your task for the COMP229 midterm is to wire up a RESTful API that manages a col
 
 **Duration: 120 minutes.**
 
+[Download the instructions PDF](https://cent-col.github.io/COMP229-F26-MIDTERM/instructions.pdf).
+
 ### Endpoints
 1. **GET /api/equipment** - Retrieve the full list of equipment.
 2. **GET /api/equipment/filter?category=[category name]** - Retrieve equipment whose category matches the query.
@@ -52,21 +54,39 @@ Capture at least one API response that clearly displays the entire personalized 
 
 ## Setup Instructions
 
-1. **Clone the repository**
+1. **Open the starter project**
+
+   Choose the option that matches how you obtained the starter:
+
+   - **Already downloaded or extracted the starter?** Extract the ZIP if needed, then open the project folder in VS Code. Choose the folder containing `package.json` and `server.js`. Continue to step 2.
+   - **Need the starter?** [Download the starter ZIP](https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip), extract it, and open the folder containing `package.json` and `server.js` in VS Code. Continue to step 2.
+   - **Prefer to clone with Git?** Run the commands below, then open the cloned folder in VS Code. Continue to step 2.
+
    ```bash
    git clone https://github.com/CENT-COL/COMP229-F26-MIDTERM.git
    cd COMP229-F26-MIDTERM
    ```
-2. **Install dependencies**
+
+2. **Open a terminal in the project folder**
+
+   In VS Code, select **Terminal > New Terminal**. Make sure the terminal is in the folder containing `package.json` and `server.js`, whether you downloaded or cloned the starter.
+
+3. **Install dependencies**
+
    ```bash
    npm install
    ```
-3. **Run the server**
+
+4. **Run the server**
+
    ```bash
    npm start
    ```
+
    The server listens on port `3000`. Stop it with Ctrl+C and restart after editing.
-4. **Test the API**
+
+5. **Test the API**
+
    Use Postman (desktop or VS Code extension), Thunder Client, Insomnia, or a similar tool. For each endpoint:
    - Make the request using the correct method and URL.
    - Include the request body for POST and PUT calls, using raw JSON.

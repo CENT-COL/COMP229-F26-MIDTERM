@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Midterm API Project - COMP229</title><style>body{font-family:Arial,sans-serif;max-width:900px;margin:0 auto;padding:20px;line-height:1.6;color:#333}h1,h2,h3{color:#333}pre{background:#f4f4f4;padding:10px;border-left:4px solid #ccc;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}hr{border:0;border-top:1px solid #ccc;margin:24px 0}a{color:#0969da}.downloads{font-size:14px}li{margin:3px 0}@media print{.downloads{display:none}body{padding:0}h2,h3{break-after:avoid}img,pre{break-inside:avoid}}</style></head><body><p class="downloads"><a href="instructions.pdf">PDF instructions</a> | <a href="https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip">Starter ZIP</a></p><h1>Midterm API Project - COMP229</h1>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Midterm API Project - COMP229</title><style>body{font-family:Arial,sans-serif;max-width:900px;margin:0 auto;padding:20px;line-height:1.6;color:#333}h1,h2,h3{color:#333}pre{background:#f4f4f4;padding:10px;border-left:4px solid #ccc;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}hr{border:0;border-top:1px solid #ccc;margin:24px 0}a{color:#0969da}.downloads{font-size:14px}li{margin:3px 0}@media print{.downloads{display:none}body{padding:0}h2,h3{break-after:avoid}img,pre{break-inside:avoid}}</style></head><body><h1>Midterm API Project - COMP229</h1>
 <h2>Project Overview</h2>
 <p>Your task for the COMP229 midterm is to wire up a RESTful API that manages a collection of equipment. An Express server is already configured to run on port <code>3000</code>, and a starter collection of equipment data is provided - you just need to implement each endpoint.</p>
 <p><strong>Duration: 120 minutes.</strong></p>
+<p><a href="https://cent-col.github.io/COMP229-F26-MIDTERM/instructions.pdf">Download the instructions PDF</a>.</p>
 <h3>Endpoints</h3>
 <ol>
 <li><strong>GET /api/equipment</strong> - Retrieve the full list of equipment.</li>
@@ -41,18 +42,32 @@
 <hr>
 <h2>Setup Instructions</h2>
 <ol>
-<li><strong>Clone the repository</strong><pre><code class="language-bash">git clone https://github.com/CENT-COL/COMP229-F26-MIDTERM.git
+<li><p><strong>Open the starter project</strong></p>
+<p>Choose the option that matches how you obtained the starter:</p>
+<ul>
+<li><strong>Already downloaded or extracted the starter?</strong> Extract the ZIP if needed, then open the project folder in VS Code. Choose the folder containing <code>package.json</code> and <code>server.js</code>. Continue to step 2.</li>
+<li><strong>Need the starter?</strong> <a href="https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip">Download the starter ZIP</a>, extract it, and open the folder containing <code>package.json</code> and <code>server.js</code> in VS Code. Continue to step 2.</li>
+<li><strong>Prefer to clone with Git?</strong> Run the commands below, then open the cloned folder in VS Code. Continue to step 2.</li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/CENT-COL/COMP229-F26-MIDTERM.git
 cd COMP229-F26-MIDTERM
 </code></pre>
 </li>
-<li><strong>Install dependencies</strong><pre><code class="language-bash">npm install
+<li><p><strong>Open a terminal in the project folder</strong></p>
+<p>In VS Code, select <strong>Terminal &gt; New Terminal</strong>. Make sure the terminal is in the folder containing <code>package.json</code> and <code>server.js</code>, whether you downloaded or cloned the starter.</p>
+</li>
+<li><p><strong>Install dependencies</strong></p>
+<pre><code class="language-bash">npm install
 </code></pre>
 </li>
-<li><strong>Run the server</strong><pre><code class="language-bash">npm start
+<li><p><strong>Run the server</strong></p>
+<pre><code class="language-bash">npm start
 </code></pre>
-The server listens on port <code>3000</code>. Stop it with Ctrl+C and restart after editing.</li>
-<li><strong>Test the API</strong>
-Use Postman (desktop or VS Code extension), Thunder Client, Insomnia, or a similar tool. For each endpoint:<ul>
+<p>The server listens on port <code>3000</code>. Stop it with Ctrl+C and restart after editing.</p>
+</li>
+<li><p><strong>Test the API</strong></p>
+<p>Use Postman (desktop or VS Code extension), Thunder Client, Insomnia, or a similar tool. For each endpoint:</p>
+<ul>
 <li>Make the request using the correct method and URL.</li>
 <li>Include the request body for POST and PUT calls, using raw JSON.</li>
 <li>Verify the response payload and HTTP status code.</li>
