@@ -59,6 +59,11 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, '127.0.0.1', () => {
+app.listen(PORT, '127.0.0.1', err => {
+  if (err) {
+    console.error(`Cannot start on port ${PORT}: ${err.message}`);
+    process.exitCode = 1;
+    return;
+  }
   console.log(`Equipment API: http://localhost:${PORT}`);
 });
