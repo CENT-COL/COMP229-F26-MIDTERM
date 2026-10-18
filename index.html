@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Midterm API Project - COMP229</title><style>body{font-family:Arial,sans-serif;max-width:900px;margin:0 auto;padding:20px;line-height:1.6;color:#333}h1,h2,h3{color:#333}pre{background:#f4f4f4;padding:10px;border-left:4px solid #ccc;overflow-x:auto}code{font-family:Consolas,monospace}img{max-width:100%;height:auto}hr{border:0;border-top:1px solid #ccc;margin:24px 0}a{color:#0969da}.downloads{font-size:14px}li{margin:3px 0}@media print{.downloads{display:none}body{padding:0}h2,h3{break-after:avoid}img,pre{break-inside:avoid}}</style></head><body><h1>Midterm API Project - COMP229</h1>
+<h2>Project Overview</h2>
+<p>Your task for the COMP229 midterm is to wire up a RESTful API that manages a collection of equipment. An Express server is already configured to run on port <code>3000</code>, and a starter collection of equipment data is provided - you just need to implement each endpoint.</p>
+<p><strong>Duration: 120 minutes.</strong></p>
+<p><a href="https://cent-col.github.io/COMP229-F26-MIDTERM/instructions.pdf">Download the instructions PDF</a>.</p>
+<h3>Endpoints</h3>
+<ol>
+<li><strong>GET /api/equipment</strong> - Retrieve the full list of equipment.</li>
+<li><strong>GET /api/equipment/filter?category=[category name]</strong> - Retrieve equipment whose category matches the query.</li>
+<li><strong>GET /api/equipment/:id</strong> - Retrieve an equipment item by its array index (ID).</li>
+<li><strong>POST /api/equipment</strong> - Add a new equipment item to the collection.</li>
+<li><strong>PUT /api/equipment/:id</strong> - Update an equipment item by its array index (ID).</li>
+<li><strong>DELETE /api/equipment/:id</strong> - Remove an equipment item by its array index (ID).</li>
+</ol>
+<p>The starter data lives in <code>server.js</code>, but <strong>you must complete the logic</strong> for every endpoint above. Array indexes start at <strong>0</strong>: <code>/api/equipment/0</code> refers to the first item.</p>
+<h3>Array Example</h3>
+<p>Below is an example of the object structure you will manipulate. <strong>An array containing five equipment items is already provided in the code.</strong></p>
+<p><img src="public/images/array-example.jpg" alt="Array Example"></p>
+<hr>
+<h2>Personalized Requirements</h2>
+<h3>Tailor the Collection Using Your Student ID</h3>
+<p><strong>Add exactly two equipment items to the starter array</strong> based on the last digit of your student ID:</p>
+<ul>
+<li><strong>0-1:</strong> Add 2 equipment items released between <strong>1990-1999</strong></li>
+<li><strong>2-3:</strong> Add 2 equipment items released between <strong>2000-2009</strong></li>
+<li><strong>4-5:</strong> Add 2 equipment items released between <strong>2010-2019</strong></li>
+<li><strong>6-7:</strong> Add 2 equipment items released between <strong>2020-2026</strong></li>
+<li><strong>8-9:</strong> Add 2 <strong>portable</strong> equipment items (any year)</li>
+</ul>
+<p><strong>Example:</strong> Student ID <code>301234567</code> ends in 7, so add two equipment items released between 2020-2026.</p>
+<h3>Format for Your Additional Equipment</h3>
+<pre><code class="language-javascript">{
+  name: &#39;Equipment Name&#39;,
+  category: &#39;Category&#39;,
+  brand: &#39;Brand Name&#39;,
+  year: 2024,
+  quantity: 2
+}
+</code></pre>
+<h3>Screenshot Requirement</h3>
+<p>Capture at least one API response that clearly displays the entire personalized collection (starter equipment + your two additions = 7 total).</p>
+<hr>
+<h2>Setup Instructions</h2>
+<h3>Step 1: Get the starter ZIP</h3>
+<p><a href="https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip">Download the starter ZIP</a>. If you already downloaded it, use your existing copy.</p>
+<h3>Step 2: Extract the ZIP</h3>
+<p>Extract the ZIP to a folder on your computer. If you already extracted it, continue to step 3.</p>
+<h3>Step 3: Open the project in VS Code</h3>
+<p>In VS Code, select <strong>File &gt; Open Folder</strong>. Open the extracted folder that contains <code>package.json</code> and <code>server.js</code>.</p>
+<h3>Step 4: Install dependencies</h3>
+<p>In VS Code, select <strong>Terminal &gt; New Terminal</strong>. The terminal must be in the project folder containing <code>package.json</code>. Run:</p>
+<pre><code class="language-bash">npm install
+</code></pre>
+<h3>Step 5: Start the server</h3>
+<p>In the same terminal, run:</p>
+<pre><code class="language-bash">npm start
+</code></pre>
+<p>The server listens on port <code>3000</code>. Stop it with Ctrl+C and restart after editing.</p>
+<h3>Step 6: Test the API</h3>
+<p>Open Postman (desktop or VS Code extension), Thunder Client, Insomnia, or a similar tool. Send requests to <code>http://localhost:3000</code> using the six endpoints listed above.</p>
+<p>Use the correct method and URL for each request. For POST and PUT, select a raw JSON body and enter the equipment data. Check the response payload and HTTP status code.</p>
+<p>You can also run the automated API checks in a terminal:</p>
+<pre><code class="language-bash">npm test
+</code></pre>
+<p>The tests start and stop their own server. They check the six endpoints and the seven-item starting collection. Failures are expected until you implement the endpoints and add your two items. Your student-ID personalization and submission screenshots still need to be reviewed.</p>
+<hr>
+<h2>Submission Requirements</h2>
+<ol>
+<li><p><strong>Screenshots</strong>
+Provide clear evidence of testing for <strong>all six endpoints</strong>. Every screenshot must show:</p>
+<ul>
+<li>Request URL and method</li>
+<li>Request body when applicable</li>
+<li>Successful response with status code</li>
+<li>At least one screenshot highlighting your complete 7-item equipment collection</li>
+</ul>
+<p><strong>Filename convention:</strong> <code>[StudentID]_[LastName]_[EndpointNumber]_[Method].png</code>
+Example: <code>301234567_Smith_01_GET_ALL.png</code></p>
+<p><strong>Need a reference?</strong> The screenshot below shows the expected Postman layout.</p>
+<p><img src="public/images/postman-example.jpg" alt="Postman Example"></p>
+</li>
+<li><p><strong>Code Submission</strong></p>
+<ul>
+<li>Zip your project files, excluding <code>node_modules</code> and <code>.git</code>.</li>
+<li>Share the GitHub repository link containing your implementation.</li>
+<li>Keep screenshots organized and easy to review.</li>
+<li>Confirm your personalized equipment appears in both code and responses.</li>
+</ul>
+</li>
+<li><p><strong>Reflection (optional, but recommended)</strong>
+Summarize in a short paragraph how you validated each endpoint and any edge cases considered.</p>
+</li>
+</ol>
+<hr>
+<h2>Academic Integrity Notice</h2>
+<p><strong>Warning:</strong> Submissions are reviewed for</p>
+<ul>
+<li>Personalized additions that match your student ID rule set</li>
+<li>Proper screenshot naming conventions</li>
+<li>Individual equipment selections across submissions</li>
+</ul>
+<p>Suspected irregularities will be investigated according to academic integrity policies.</p>
+<hr>
+<h2>Good Luck!</h2>
+<p>Write clean, well-structured code, validate inputs, and handle errors gracefully. You&#39;ve got this!</p>
+</body></html>
