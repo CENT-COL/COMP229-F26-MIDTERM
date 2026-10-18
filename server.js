@@ -12,7 +12,7 @@ let equipment = [
   { id: 5, name: 'Studio Headphones', category: 'audio', quantity: 8 }
 ];
 
-// Set your assigned variant and record it in SUBMISSION.txt.
+// Use the last-digit lookup table in README section 4; record its letter in SUBMISSION.txt.
 const variant = 'REPLACE_WITH_A_B_C_OR_D';
 
 app.get('/', (req, res) => {

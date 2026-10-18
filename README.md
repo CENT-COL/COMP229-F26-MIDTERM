@@ -22,7 +22,7 @@ Suggested time: 10 minutes for setup/personalization, 65 minutes for endpoints, 
 
    ```sh
    node --version
-   npm ci
+   npm install
    npm start
    ```
 
@@ -58,49 +58,70 @@ On a successful POST or PUT, trim outer whitespace from `name` and `category`, p
 
 ## 4. Personalized requirements
 
-### A. Find your variant
+### Step 1 — Find the row for your student ID
 
-Let **d** be the last digit of your student ID. Calculate **d % 4** (the remainder after dividing by four).
+Look at the **last digit** of your student ID and use that row below. **No calculation is needed.** The variant letter is simply the label you will put in your code and submission form.
 
-| Remainder | Variant | Category for BOTH added records | Order of filtered results |
-|---|---|---|---|
-| 0 | A | `audio` | Name ascending (A–Z) |
-| 1 | B | `lighting` | Name descending (Z–A) |
-| 2 | C | `networking` | Name ascending (A–Z) |
-| 3 | D | `tools` | Name descending (Z–A) |
+| Last digit of your student ID | Variant | Category for your two new records | Quantity for EACH new record | Filter results by name |
+|---|---|---|---|---|
+| 0 | A | `audio` | 1–5 | A–Z |
+| 1 | B | `lighting` | 1–5 | Z–A |
+| 2 | C | `networking` | 6–10 | A–Z |
+| 3 | D | `tools` | 6–10 | Z–A |
+| 4 | A | `audio` | 11–15 | A–Z |
+| 5 | B | `lighting` | 11–15 | Z–A |
+| 6 | C | `networking` | 16–20 | A–Z |
+| 7 | D | `tools` | 16–20 | Z–A |
+| 8 | A | `audio` | 21–25 | A–Z |
+| 9 | B | `lighting` | 21–25 | Z–A |
 
-For convenience: **0→A, 1→B, 2→C, 3→D, 4→A, 5→B, 6→C, 7→D, 8→A, 9→B**.
+For example, **16–20** means you may choose 16, 17, 18, 19, or 20 for each new record. The two quantities may be the same or different.
 
-Set the `variant` constant in `server.js` and complete `SUBMISSION.txt`. Sort matching names using JavaScript `localeCompare`; reverse the comparison for descending order. Only filtered results require name ordering. The full list uses array/insertion order. Sorting a filter response must not reorder the stored array.
+### Step 2 — Add two records in `server.js`
 
-### B. Find your quantity range
+Keep the five supplied records. Add **two more objects at the end of the same `equipment` array**, before the closing `];`:
 
-Each of your two added records must independently have an integer quantity in the inclusive range below:
+- Give the new records IDs **6** and **7**.
+- Choose two different equipment names that are also different from the five supplied names. Fictional names are fine.
+- Give **both** new records the category from your row.
+- Choose a quantity for **each** new record within your row's range.
+- Add a comma after the existing ID 5 object so you can place ID 6 after it. Separate ID 6 and ID 7 with another comma.
 
-| Last student-ID digit | Quantity range |
-|---|---|
-| 0–1 | 1–5 |
-| 2–3 | 6–10 |
-| 4–5 | 11–15 |
-| 6–7 | 16–20 |
-| 8–9 | 21–25 |
+**Worked example — fictional student ID `301234567`:** the last digit is **7**, so use the row starting with **7**: **variant D**, category **`tools`**, quantities **16–20**, and filtered names in **Z–A** order.
 
-### C. Add exactly two records
-
-Add IDs **6 and 7** directly to the initial array. Use your assigned category for both, quantities in your range, and two different names that also differ from the supplied names. Fictional names are acceptable. Keep all five original records. The initial catalogue must contain **seven records** every time the server starts.
-
-**Worked example — fictional student ID `301234567`:** the last digit is 7; `7 % 4` is 3, so this student uses **variant D**, adds two `tools` records, uses quantities **16–20**, and returns filtered matches in descending name order. Suitable additions would be:
+For that example, the complete starting array could look like this:
 
 ```js
-{ id: 6, name: 'Precision Driver Kit', category: 'tools', quantity: 16 },
-{ id: 7, name: 'Workshop Measuring Tape', category: 'tools', quantity: 20 }
+let equipment = [
+  { id: 1, name: 'USB Microphone', category: 'audio', quantity: 5 },
+  { id: 2, name: 'LED Panel', category: 'lighting', quantity: 4 },
+  { id: 3, name: 'Network Switch', category: 'networking', quantity: 3 },
+  { id: 4, name: 'Cable Tester', category: 'tools', quantity: 6 },
+  { id: 5, name: 'Studio Headphones', category: 'audio', quantity: 8 },
+  { id: 6, name: 'Precision Driver Kit', category: 'tools', quantity: 16 },
+  { id: 7, name: 'Workshop Measuring Tape', category: 'tools', quantity: 20 }
+];
 ```
 
-For that example, filtering `tools` returns **Workshop Measuring Tape, Precision Driver Kit, Cable Tester**. Use your own applicable additions and record them in `SUBMISSION.txt`.
+Only the final two objects are additions. **Use your own row**, even if its category or quantity range is different from this example.
 
-These personalization rules apply **only to your two initial additions**. POST and PUT accept any nonempty category and any nonnegative integer quantity under the general field rules. They must not restrict normal API requests to your variant's category or quantity range.
+### Step 3 — Record your variant and use its filter order
 
-Capture your complete seven-record initial response **before** mutation tests. Restart to restore it if necessary. Restarting discards all POST, PUT, and DELETE changes.
+Replace the placeholder in the existing `variant` line in `server.js` with the letter from your row. For the example ending in **7**, that line becomes:
+
+```js
+const variant = 'D';
+```
+
+Complete `SUBMISSION.txt` with that letter, your category and quantity range, and the names of your two additions.
+
+The **A–Z / Z–A** rule applies to the response from **`GET /api/equipment/filter`**. For the example above, filtering `tools` returns **Workshop Measuring Tape, Precision Driver Kit, Cable Tester**. Use JavaScript `localeCompare` to compare names; reverse the comparison for Z–A. The full-list endpoint keeps the array's original order, and filtering must not reorder the stored array.
+
+### Step 4 — Check your seven starting records
+
+Start the server and, once you have implemented GET all, request **`GET /api/equipment`**. It must show **seven records**: the original five plus your two additions. Capture this response before testing POST, PUT, or DELETE. Restarting the server restores these seven starting records.
+
+**Important:** the category and quantity range in your row apply only to the **two objects you add to the starting array**. They are not restrictions on POST or PUT. Those endpoints must accept any nonempty category and any nonnegative integer quantity under the general field rules.
 
 ## 5. Endpoint requirements and examples
 
@@ -254,7 +275,7 @@ Submit one ZIP named `[StudentID]_[LastName]_COMP229_Midterm.zip` through the co
 
 Complete `SUBMISSION.txt`, including variant and both personalized records. Include any additional source modules you created. Exclude `node_modules`, `.git`, `.env` files, credentials, editor caches, and unrelated files. A repository URL is optional and does not replace the ZIP. A public repository is not required.
 
-Before submitting, check that a clean extracted copy starts with `npm ci` and `npm start`, that your two additions survive a restart, and that your screenshots and request export are present. Dates and the submission window are announced in the course; this README does not change course weighting or institutional policies.
+Before submitting, check that a clean extracted copy starts with `npm install` and `npm start`, that your two additions survive a restart, and that your screenshots and request export are present. Dates and the submission window are announced in the course; this README does not change course weighting or institutional policies.
 
 ## 8. Marking rubric
 
