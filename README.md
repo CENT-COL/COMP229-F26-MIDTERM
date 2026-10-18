@@ -54,6 +54,8 @@ Capture at least one API response that clearly displays the entire personalized 
 
 ## Setup Instructions
 
+Use Node.js 22 or later.
+
 ### Step 1: Get the starter ZIP
 
 [Download the starter ZIP](https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip). If you already downloaded it, use your existing copy.
