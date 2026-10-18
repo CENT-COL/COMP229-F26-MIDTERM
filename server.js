@@ -1,61 +1,59 @@
+/**
+ * Midterm API Project - COMP229
+ * Implement the six equipment API endpoints described in README.md.
+ * Use the array index as the ID: index 0 is the first equipment item.
+ * Add exactly two personalized items to the five supplied below.
+ */
 import express from 'express';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const app = express();
+const directory = path.dirname(fileURLToPath(import.meta.url));
 app.use(express.json());
+app.use(express.static(path.join(directory, 'public')));
+app.use('/public', express.static(path.join(directory, 'public')));
 
-// Preserve these five records. Add exactly two personalized records (IDs 6 and 7).
 let equipment = [
-  { id: 1, name: 'USB Microphone', category: 'audio', quantity: 5 },
-  { id: 2, name: 'LED Panel', category: 'lighting', quantity: 4 },
-  { id: 3, name: 'Network Switch', category: 'networking', quantity: 3 },
-  { id: 4, name: 'Cable Tester', category: 'tools', quantity: 6 },
-  { id: 5, name: 'Studio Headphones', category: 'audio', quantity: 8 }
+  { name: 'USB Microphone', category: 'audio', brand: 'AudioLab', year: 2021, quantity: 5 },
+  { name: 'LED Panel', category: 'lighting', brand: 'BrightWorks', year: 2022, quantity: 4 },
+  { name: 'Network Switch', category: 'networking', brand: 'NetCore', year: 2020, quantity: 3 },
+  { name: 'Cable Tester', category: 'tools', brand: 'TestPro', year: 2019, quantity: 6 },
+  { name: 'Studio Headphones', category: 'audio', brand: 'SoundCraft', year: 2023, quantity: 8 }
 ];
 
-// Use the last-digit lookup table in README section 4; record its letter in SUBMISSION.txt.
-const variant = 'REPLACE_WITH_A_B_C_OR_D';
-
-app.get('/', (req, res) => {
-  res.json({ message: 'COMP229 Equipment Catalogue API — see README.md for instructions' });
-});
+app.get('/', (req, res) => res.sendFile(path.join(directory, 'index.html')));
+app.get('/instructions.pdf', (req, res) => res.sendFile(path.join(directory, 'instructions.pdf')));
 
 app.get('/api/equipment', (req, res) => {
-  // TODO: Return all equipment records.
-  res.status(501).json({ error: 'Not implemented' });
+  // TODO: Return the full equipment array.
+  res.status(501).send('Not Implemented');
 });
 
-// Keep the literal /filter route before /:id.
+// Keep the filter route before /:id.
 app.get('/api/equipment/filter', (req, res) => {
-  // TODO: Filter by category and apply your variant's name ordering.
-  res.status(501).json({ error: 'Not implemented' });
+  // TODO: Return equipment matching the category query.
+  res.status(501).send('Not Implemented');
 });
 
 app.get('/api/equipment/:id', (req, res) => {
-  // TODO: Retrieve a record by its stable ID.
-  res.status(501).json({ error: 'Not implemented' });
+  // TODO: Return the equipment at this array index.
+  res.status(501).send('Not Implemented');
 });
 
 app.post('/api/equipment', (req, res) => {
-  // TODO: Validate the body, generate an ID, and create a record.
-  res.status(501).json({ error: 'Not implemented' });
+  // TODO: Add an equipment item to the array.
+  res.status(501).send('Not Implemented');
 });
 
 app.put('/api/equipment/:id', (req, res) => {
-  // TODO: Validate the request and replace editable fields, retaining the ID.
-  res.status(501).json({ error: 'Not implemented' });
+  // TODO: Update the equipment at this array index.
+  res.status(501).send('Not Implemented');
 });
 
 app.delete('/api/equipment/:id', (req, res) => {
-  // TODO: Delete the record with this ID without renumbering other records.
-  res.status(501).json({ error: 'Not implemented' });
-});
-
-// Malformed JSON is handled for you. Leave this handler after the routes.
-app.use((err, req, res, next) => {
-  if (err.type === 'entity.parse.failed') {
-    return res.status(400).json({ error: 'Invalid JSON' });
-  }
-  next(err);
+  // TODO: Remove the equipment at this array index.
+  res.status(501).send('Not Implemented');
 });
 
 const PORT = process.env.PORT || 3000;
@@ -65,5 +63,5 @@ app.listen(PORT, '127.0.0.1', err => {
     process.exitCode = 1;
     return;
   }
-  console.log(`Equipment API: http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
