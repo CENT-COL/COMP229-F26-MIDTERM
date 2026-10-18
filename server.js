@@ -5,14 +5,9 @@
  * Add exactly two personalized items to the five supplied below.
  */
 import express from 'express';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 const app = express();
-const directory = path.dirname(fileURLToPath(import.meta.url));
 app.use(express.json());
-app.use(express.static(path.join(directory, 'public')));
-app.use('/public', express.static(path.join(directory, 'public')));
 
 let equipment = [
   { name: 'USB Microphone', category: 'audio', brand: 'AudioLab', year: 2021, quantity: 5 },
@@ -21,9 +16,6 @@ let equipment = [
   { name: 'Cable Tester', category: 'tools', brand: 'TestPro', year: 2019, quantity: 6 },
   { name: 'Studio Headphones', category: 'audio', brand: 'SoundCraft', year: 2023, quantity: 8 }
 ];
-
-app.get('/', (req, res) => res.sendFile(path.join(directory, 'index.html')));
-app.get('/instructions.pdf', (req, res) => res.sendFile(path.join(directory, 'instructions.pdf')));
 
 app.get('/api/equipment', (req, res) => {
   // TODO: Return the full equipment array.

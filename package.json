@@ -4,7 +4,7 @@
   "private": true,
   "description": "COMP229 Fall 2026 midterm — Equipment Catalogue API",
   "type": "module",
-  "scripts": { "start": "node server.js" },
+  "scripts": { "start": "node server.js", "test": "node --test api.test.js" },
   "engines": { "node": ">=22" },
   "dependencies": { "express": "5.2.1" }
 }

@@ -90,6 +90,14 @@ Open Postman (desktop or VS Code extension), Thunder Client, Insomnia, or a simi
 
 Use the correct method and URL for each request. For POST and PUT, select a raw JSON body and enter the equipment data. Check the response payload and HTTP status code.
 
+You can also run the automated API checks in a terminal:
+
+```bash
+npm test
+```
+
+The tests start and stop their own server. They check the six endpoints and the seven-item starting collection. Failures are expected until you implement the endpoints and add your two items. Your student-ID personalization and submission screenshots still need to be reviewed.
+
 ---
 
 ## Submission Requirements
