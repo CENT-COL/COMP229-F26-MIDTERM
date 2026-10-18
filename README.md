@@ -54,43 +54,41 @@ Capture at least one API response that clearly displays the entire personalized 
 
 ## Setup Instructions
 
-1. **Open the starter project**
+### Step 1: Get the starter ZIP
 
-   Choose the option that matches how you obtained the starter:
+[Download the starter ZIP](https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip). If you already downloaded it, use your existing copy.
 
-   - **Already downloaded or extracted the starter?** Extract the ZIP if needed, then open the project folder in VS Code. Choose the folder containing `package.json` and `server.js`. Continue to step 2.
-   - **Need the starter?** [Download the starter ZIP](https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip), extract it, and open the folder containing `package.json` and `server.js` in VS Code. Continue to step 2.
-   - **Prefer to clone with Git?** Run the commands below, then open the cloned folder in VS Code. Continue to step 2.
+### Step 2: Extract the ZIP
 
-   ```bash
-   git clone https://github.com/CENT-COL/COMP229-F26-MIDTERM.git
-   cd COMP229-F26-MIDTERM
-   ```
+Extract the ZIP to a folder on your computer. If you already extracted it, continue to step 3.
 
-2. **Open a terminal in the project folder**
+### Step 3: Open the project in VS Code
 
-   In VS Code, select **Terminal > New Terminal**. Make sure the terminal is in the folder containing `package.json` and `server.js`, whether you downloaded or cloned the starter.
+In VS Code, select **File > Open Folder**. Open the extracted folder that contains `package.json` and `server.js`.
 
-3. **Install dependencies**
+### Step 4: Install dependencies
 
-   ```bash
-   npm install
-   ```
+In VS Code, select **Terminal > New Terminal**. The terminal must be in the project folder containing `package.json`. Run:
 
-4. **Run the server**
+```bash
+npm install
+```
 
-   ```bash
-   npm start
-   ```
+### Step 5: Start the server
 
-   The server listens on port `3000`. Stop it with Ctrl+C and restart after editing.
+In the same terminal, run:
 
-5. **Test the API**
+```bash
+npm start
+```
 
-   Use Postman (desktop or VS Code extension), Thunder Client, Insomnia, or a similar tool. For each endpoint:
-   - Make the request using the correct method and URL.
-   - Include the request body for POST and PUT calls, using raw JSON.
-   - Verify the response payload and HTTP status code.
+The server listens on port `3000`. Stop it with Ctrl+C and restart after editing.
+
+### Step 6: Test the API
+
+Open Postman (desktop or VS Code extension), Thunder Client, Insomnia, or a similar tool. Send requests to `http://localhost:3000` using the six endpoints listed above.
+
+Use the correct method and URL for each request. For POST and PUT, select a raw JSON body and enter the equipment data. Check the response payload and HTTP status code.
 
 ---
 

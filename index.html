@@ -41,39 +41,24 @@
 <p>Capture at least one API response that clearly displays the entire personalized collection (starter equipment + your two additions = 7 total).</p>
 <hr>
 <h2>Setup Instructions</h2>
-<ol>
-<li><p><strong>Open the starter project</strong></p>
-<p>Choose the option that matches how you obtained the starter:</p>
-<ul>
-<li><strong>Already downloaded or extracted the starter?</strong> Extract the ZIP if needed, then open the project folder in VS Code. Choose the folder containing <code>package.json</code> and <code>server.js</code>. Continue to step 2.</li>
-<li><strong>Need the starter?</strong> <a href="https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip">Download the starter ZIP</a>, extract it, and open the folder containing <code>package.json</code> and <code>server.js</code> in VS Code. Continue to step 2.</li>
-<li><strong>Prefer to clone with Git?</strong> Run the commands below, then open the cloned folder in VS Code. Continue to step 2.</li>
-</ul>
-<pre><code class="language-bash">git clone https://github.com/CENT-COL/COMP229-F26-MIDTERM.git
-cd COMP229-F26-MIDTERM
-</code></pre>
-</li>
-<li><p><strong>Open a terminal in the project folder</strong></p>
-<p>In VS Code, select <strong>Terminal &gt; New Terminal</strong>. Make sure the terminal is in the folder containing <code>package.json</code> and <code>server.js</code>, whether you downloaded or cloned the starter.</p>
-</li>
-<li><p><strong>Install dependencies</strong></p>
+<h3>Step 1: Get the starter ZIP</h3>
+<p><a href="https://github.com/CENT-COL/COMP229-F26-MIDTERM/archive/refs/heads/main.zip">Download the starter ZIP</a>. If you already downloaded it, use your existing copy.</p>
+<h3>Step 2: Extract the ZIP</h3>
+<p>Extract the ZIP to a folder on your computer. If you already extracted it, continue to step 3.</p>
+<h3>Step 3: Open the project in VS Code</h3>
+<p>In VS Code, select <strong>File &gt; Open Folder</strong>. Open the extracted folder that contains <code>package.json</code> and <code>server.js</code>.</p>
+<h3>Step 4: Install dependencies</h3>
+<p>In VS Code, select <strong>Terminal &gt; New Terminal</strong>. The terminal must be in the project folder containing <code>package.json</code>. Run:</p>
 <pre><code class="language-bash">npm install
 </code></pre>
-</li>
-<li><p><strong>Run the server</strong></p>
+<h3>Step 5: Start the server</h3>
+<p>In the same terminal, run:</p>
 <pre><code class="language-bash">npm start
 </code></pre>
 <p>The server listens on port <code>3000</code>. Stop it with Ctrl+C and restart after editing.</p>
-</li>
-<li><p><strong>Test the API</strong></p>
-<p>Use Postman (desktop or VS Code extension), Thunder Client, Insomnia, or a similar tool. For each endpoint:</p>
-<ul>
-<li>Make the request using the correct method and URL.</li>
-<li>Include the request body for POST and PUT calls, using raw JSON.</li>
-<li>Verify the response payload and HTTP status code.</li>
-</ul>
-</li>
-</ol>
+<h3>Step 6: Test the API</h3>
+<p>Open Postman (desktop or VS Code extension), Thunder Client, Insomnia, or a similar tool. Send requests to <code>http://localhost:3000</code> using the six endpoints listed above.</p>
+<p>Use the correct method and URL for each request. For POST and PUT, select a raw JSON body and enter the equipment data. Check the response payload and HTTP status code.</p>
 <hr>
 <h2>Submission Requirements</h2>
 <ol>
